@@ -3,4 +3,4 @@ import init from './init.js';
 
 render(init(), document.getElementById('root'));
 
-console.log('Everythink is good!!');
+console.log('Everything is good!!');

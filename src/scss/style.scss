@@ -1,43 +1,35 @@
 @import "~bootstrap/scss/bootstrap";
 
 $colors-for-square: (
+  0: #b9e762,
   1: #FFFFCC,
   2: #CCCC00,
-  3: #FF9933,
-  4: #FF9966,
-  5: #CC6666,
-  6: #990033,
-  7: #993366,
-  8: #FF0099,
+  3: #b4b249,
+  4: #dab09b,
+  5: #868f5e,
+  6: #eca8bf,
+  7: #ecbed5,
+  8: #f367bb,
   9: #FF66FF,
   10: #CC33FF,
-  11: #996699,
-  12: #6600FF,
-  13: #3366CC,
+  11: #eb9deb,
+  12: #a16dee,
+  13: #a7bde9,
   14: #00CCFF,
   15: #669999,
   16: #99FFFF,
-  17: #00FF66,
-  18: #99FF33,
-  19: #669900,
+  17: #379bec,
+  18: #e0ff33,
+  19: #61c4ae,
   20: #CC99FF,
   21: #FFCCFF,
-  22: #660033,
-  23: #330033,
-  24: #663333,
-  25: #993399,
-  26: #FF9966
+  22: #61f7d1,
+  23: #8499df,
+  24: #495bf7,
+  25: #1f191f,
   );
 
-  .sc {
-    @each $square, $color in $colors-for-square {
-  
-      &-#{$square} {
-        background: $color;
-      }
-    }
-  }
-  @media (min-width: 368px) and (max-width: 538px) {
+@media (min-width: 368px) and (max-width: 538px) {
     .main-box {
         margin-left: calc(var(--bs-gutter-x) * 1);
         margin-right: calc(var(--bs-gutter-x) * 1);
@@ -51,45 +43,145 @@ $colors-for-square: (
         max-width: 650px;
     }
  }
- @include media-breakpoint-up(lg) { 
+@include media-breakpoint-up(lg) { 
     .main-box {
         margin-left: 60px;
         max-width: 810px;
     }
  }
- @include media-breakpoint-up(xl) { 
+@include media-breakpoint-up(xl) { 
     .main-box {
         margin-left: 20px;
         max-width: 1050px;
     }
  }
- @include media-breakpoint-up(xxl) { 
+@include media-breakpoint-up(xxl) { 
     .main-box {
         margin-left: 0px;
         max-width: 1450px;
     }
  }
 
+@mixin bk-for-stamp($deg, $c1, $c2) {
+    background: repeating-linear-gradient($deg, $c1 0, $c2 1px, transparent 1px, transparent 3px);
+}
 
-.main-box {
+.h-100-p {
+    height: 300px;
+}
+
+ .sc {
+     @each $class, $color in $colors-for-square {
+         &-#{$class} {
+             background-color: $color;
+         }
+     }
+ }
+
+ %stamp-shared {
+     padding: 0 2px 0 2px;
+     position: absolute;
+     top: 20px;
+     &:before {
+        content: "";
+        position: absolute;
+        top: 0; 
+        left: 0;
+        width: 100%; 
+        height: 100%;  
+        opacity: 0.4; 
+        z-index: -1;
+      }
+ }
+
+ .hidden {
+    display: none;
+ }
+
+ .stamp-sold-light {
+    @extend %stamp-shared;
+    color: rgb(201, 14, 14);
+    border: black solid 1px;
+    border-radius: 5px;    
+    text-shadow: 1px 1px 1px #000;
+    transform: rotate(-0.02turn);
+    &:before {
+        @include bk-for-stamp(-60deg, #555 , #555)
+    }
+ }
+
+ .stamp-sold-dark {
+    @extend %stamp-shared;
+    color: rgb(224, 24, 24);
+    border: rgb(240, 234, 234) solid 1px;
+    text-shadow: 1px 1px 1px rgb(53, 52, 52);
+    border-radius: 5px;
+    transform: rotate(-0.02turn);
+    &:before {
+        @include bk-for-stamp(-60deg, rgb(247, 238, 238) , rgb(238, 227, 227))
+    }
+ }
+
+ .stamp-sale-light {
+    @extend %stamp-shared;
+    text-shadow: 1px 1px 1px #000;
+    border: black solid 1px;
+    border-radius: 5px;
+    color: rgb(140, 223, 145);
+    transform: rotate(0.02turn);
+    &:before {
+        @include bk-for-stamp(-60deg, #555 , #555)
+    }
+}
+
+ .stamp-sale-dark {
+    @extend %stamp-shared;
+    color: rgb(140, 223, 145);
+    text-shadow: 1px 1px 1px rgb(29, 28, 28);
+    border: rgb(245, 243, 243) solid 1px;
+    border-radius: 5px;
+    transform: rotate(0.02turn);
+    &:before {
+        @include bk-for-stamp(-60deg, rgb(241, 239, 239) , rgb(243, 241, 241))
+    }
+}
+
+ .main-box {
     z-index: 0;
-    &:hover > * {
-        opacity: 0.9;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    &:hover > *:not(.sold) {
+        opacity: 0.6;
     }
 
 }
 
-.square {
+
+ .square {
     height: 50px;
     width: 50px;
     z-index: 1;
-    &:hover {
-        z-index: 2;
+    &:hover:not(.something) {
+        z-index: 3;
         opacity: 1;
-        transform: scale(2);
+        transform:scale(2.5);
         transition: 100ms opacity, 500ms transform;
-        box-shadow: 0px 0px 20px rgba(44, 20, 20, 0.2);
+        box-shadow: 0 0 10px 2px rgb(164, 172, 241);
         cursor: pointer;
+        .hidden {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content:flex-start;
+            align-items: center;
+        }
     }
+}
+
+.square-without-transformation {
+    height: 50px;
+    width: 50px;
+    z-index: 2;
+    transform:scale(1.2);
 }
 

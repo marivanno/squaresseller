@@ -24,11 +24,13 @@
   "homepage": "https://github.com/marivanno/templateReactBootstrapWebpack2021#readme",
   "devDependencies": {
     "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@webpack-cli/generators": "^2.4.1",
     "autoprefixer": "^10.3.7",
     "babel-loader": "^8.2.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "css-loader": "^6.5.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -40,6 +42,7 @@
     "mini-css-extract-plugin": "^2.4.3",
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.0",
+    "redux-devtools": "^3.7.0",
     "sass": "^1.43.4",
     "sass-loader": "^12.2.0",
     "style-loader": "^3.3.1",
@@ -49,9 +52,17 @@
     "workbox-webpack-plugin": "^6.3.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
     "bootstrap": "^5.1.1",
+    "classnames": "^2.3.1",
+    "coloreact": "^0.3.1",
+    "getbrightness": "^1.1.0",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-rc.1",
-    "react-dom": "^17.0.2"
+    "react-colorful": "^5.5.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2"
   }
 }
