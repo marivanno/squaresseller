@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import { Container, Col, Row } from 'react-bootstrap';
 import { uniqueId } from 'lodash';
-import { cooseColor } from '../slices/popularColors.js';
+import { chooseColor } from '../slices/popularColors.js';
 
 const PopularColorPicker = (props) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const PopularColorPicker = (props) => {
 
   const handleClick = (c, n) => () => {
     onChange(c);
-    dispatch(cooseColor(n));
+    dispatch(chooseColor(n));
   };
   return (
     <Container className="d-flex justify-content-center my-3">

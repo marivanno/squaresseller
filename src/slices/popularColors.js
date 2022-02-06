@@ -15,15 +15,14 @@ const popularColors = createSlice({
         { ...item, ...{ color: colors[getRandomColor()], selected: false, number: k } }
       ));
     },
-    cooseColor: (state, action) => {
+    chooseColor: (state, action) => {
       const n = action.payload;
-      console.log(typeof n);
       const newColorList = state.colorList
         .map((item) => (item.number === n
-          ? { ...item, ...{ selected: true } } : { ...item, ...{ selected: false } }));
+          ? { ...item, ...{ selected: true } } : { ...item, selected: false }));
       state.colorList = newColorList;
     },
-    resetCooseColor: (state) => {
+    resetChooseColor: (state) => {
       state.colorList = state.colorList.map((item) => {
         const { color, number } = item;
         return { color, selected: false, number };
@@ -33,5 +32,5 @@ const popularColors = createSlice({
 
 });
 
-export const { fetchColorList, cooseColor, resetCooseColor } = popularColors.actions;
+export const { fetchColorList, chooseColor, resetChooseColor } = popularColors.actions;
 export default popularColors.reducer;

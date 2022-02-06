@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Navbar from './Navbar.jsx';
 import Square from './Square.jsx';
-import ModalWindow from './ModalWondows.jsx';
+import ModalWindow from './ModalWindow.jsx';
 
 import { toOpenWindow as toCloseWindows, toOpenWindow } from '../slices/modal.js';
 import { fetchSquares, toChangeCurrentSquare } from '../slices/squareList.js';

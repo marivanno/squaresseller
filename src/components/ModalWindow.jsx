@@ -6,7 +6,7 @@ import { HexColorPicker } from 'react-colorful';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { toBuySquare, selectCurrentSquare } from '../slices/squareList.js';
-import { resetCooseColor } from '../slices/popularColors.js';
+import { resetChooseColor } from '../slices/popularColors.js';
 import PopularColorPicker from './PopularColorPicker.jsx';
 
 const ModalWindow = ({ props }) => {
@@ -16,7 +16,7 @@ const ModalWindow = ({ props }) => {
   const dispatch = useDispatch();
   const handleCloseWindows = () => {
     dispatch(toCloseWindows());
-    dispatch(resetCooseColor());
+    dispatch(resetChooseColor());
   };
 
   const handleClickBuy = () => {
@@ -24,7 +24,7 @@ const ModalWindow = ({ props }) => {
     const buyedSquare = { ...currentSquare, ...{ color: selectedColor } };
     dispatch(toBuySquare(buyedSquare));
     dispatch(toCloseWindows());
-    dispatch(resetCooseColor());
+    dispatch(resetChooseColor());
   };
   return (
     <Modal show={isOpen} onHide={handleCloseWindows} centered>
@@ -51,17 +51,6 @@ const ModalWindow = ({ props }) => {
                 className="position-relative h-100-p ms-0 w-100"
               />
             )}
-          </Row>
-          <Row>
-            <Col xs={6} md={4}>
-              .col-xs-6 .col-md-4
-            </Col>
-            <Col xs={6} md={4}>
-              .col-xs-6 .col-md-4
-            </Col>
-            <Col xs={6} md={4}>
-              .col-xs-6 .col-md-4
-            </Col>
           </Row>
         </Container>
       </Modal.Body>
